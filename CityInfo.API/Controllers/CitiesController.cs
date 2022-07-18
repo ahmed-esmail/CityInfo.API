@@ -12,7 +12,7 @@ public class CitiesController : ControllerBase
   public ActionResult<CitiesDataStore> Index()
   {
     var cityList = new CitiesDataStore();
-    return Ok(cityList);
+    return Ok(cityList.Cities);
   }
 
   [HttpGet("{id}")]
