@@ -3,7 +3,6 @@
   public class CitiesDataStore
   {
     public List<CityDto> Cities { get; set; }
-    public static CitiesDataStore citiesData { get; set; } = new CitiesDataStore();
 
     public CitiesDataStore()
     {
