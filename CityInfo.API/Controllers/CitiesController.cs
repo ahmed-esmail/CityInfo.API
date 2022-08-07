@@ -10,9 +10,9 @@ public class CitiesController : ControllerBase
 {
   private readonly CitiesDataStore _citiesDataStore;
 
-  public CitiesController(CitiesDataStore _citiesDataStore)
+  public CitiesController(CitiesDataStore citiesDataStore)
   {
-    this._citiesDataStore = _citiesDataStore;
+    _citiesDataStore = citiesDataStore;
   }
   [HttpGet("{id}")]
   public IActionResult GetCity([FromRoute] int id)
