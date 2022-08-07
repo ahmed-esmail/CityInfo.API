@@ -4,8 +4,8 @@ namespace CityInfo.API.Services;
 
 public class LocalMailService : IMailService
 {
-  private readonly string _mailTo;
-  private readonly string _mailFrom;
+  private readonly string _mailTo = string.Empty;
+  private readonly string _mailFrom = string.Empty;
   
   public LocalMailService(IConfiguration config)
   {

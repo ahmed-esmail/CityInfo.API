@@ -1,6 +1,8 @@
-﻿using CityInfo.API.Models;
+﻿using CityInfo.API.DbContexts;
+using CityInfo.API.Models;
 using CityInfo.API.Services;
 using Microsoft.AspNetCore.StaticFiles;
+using Microsoft.EntityFrameworkCore;
 using Serilog;
 
 namespace CityInfo.API;
@@ -27,7 +29,9 @@ public static class RegisterStartupServices
     builder.Services.AddSingleton<FileExtensionContentTypeProvider>();
     builder.Services.AddEndpointsApiExplorer();
     builder.Services.AddSwaggerGen();
-
+    builder.Services.AddDbContext<CityInfoContext>(
+      option => option.UseSqlServer(builder.Configuration.GetConnectionString("CityInfoContext")
+                                                      ?? throw new InvalidOperationException("Connection String for CityInfoContext Not Found")));
     return builder;
   }
 }
