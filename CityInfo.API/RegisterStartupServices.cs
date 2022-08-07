@@ -29,9 +29,11 @@ public static class RegisterStartupServices
     builder.Services.AddSingleton<FileExtensionContentTypeProvider>();
     builder.Services.AddEndpointsApiExplorer();
     builder.Services.AddSwaggerGen();
+    builder.Services.AddScoped<ICityInfoRepository, CityInfoRepository>();
     builder.Services.AddDbContext<CityInfoContext>(
       option => option.UseSqlServer(builder.Configuration.GetConnectionString("CityInfoContext")
                                                       ?? throw new InvalidOperationException("Connection String for CityInfoContext Not Found")));
+    builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
     return builder;
   }
 }
