@@ -16,7 +16,10 @@ public static class RegisterStartupServices
       .WriteTo.File("logs/cityinfo.txt", rollingInterval: RollingInterval.Day)
       .CreateLogger();
 
-    builder.Services.AddControllers(options => { options.ReturnHttpNotAcceptable = true; })
+    builder.Services.AddControllers(options =>
+      {
+        options.ReturnHttpNotAcceptable = true;
+      })
       .AddNewtonsoftJson()
       .AddXmlDataContractSerializerFormatters();
     builder.Host.UseSerilog();

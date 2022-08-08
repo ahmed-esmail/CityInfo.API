@@ -51,7 +51,7 @@ public class CityInfoRepository: ICityInfoRepository
       .FirstOrDefaultAsync();
   }
 
-  public async Task AddPointOfInterestForCity(int cityId,
+  public async Task AddPointOfInterestForCityAsync(int cityId,
     PointOfInterest pointOfInterest)
   {
     var city = await GetCityAsync(cityId, false);
@@ -61,6 +61,12 @@ public class CityInfoRepository: ICityInfoRepository
     }
 
   }
+
+  public void DeletePointOfInterest(PointOfInterest pointOfInterestEntity)
+  {
+    _context.PointOfInterests.Remove(pointOfInterestEntity);
+  }
+
 
   public async Task<bool> SaveChangesAsync()
   {
